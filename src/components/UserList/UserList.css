@@ -1,0 +1,44 @@
+.user-list-container {
+  padding: 20px;
+}
+
+.user-list-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.user-list-table th, .user-list-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-list-table th {
+  background-color: #f2f2f2;
+}
+
+.see-all-users {
+  margin-top: 20px;
+}
+
+.see-all-users a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.see-all-users pre {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-detail {
+  margin-top: 20px;
+}
+
+.user-detail pre {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+}
