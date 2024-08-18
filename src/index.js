@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterForm from '../src/components/RegisterForm/RegisterForm';
 import UserList from '../src/components/UserList/UserList';
 import UserDetails from '../src/components/UserDetails/UserDetails';
+import AllMembers from '../src/components/AllMembers/AllMembers';
+import { Link } from 'react-router-dom';
 
 const users = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },
@@ -19,13 +21,16 @@ root.render(
         <Route path="/" element={
           <>
             <header className="app-header">
-              <h1>Kitchen Sink App</h1>
+            <h1>
+                <Link to="/">Kitchen Sink App</Link>
+            </h1>
             </header>
             <RegisterForm />
             <UserList users={users} />
           </>
         } />
         <Route path="/api/members/:id" element={<UserDetails />} />
+        <Route path="/all-members" element={<AllMembers />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,11 +1,15 @@
 .user-list-container {
   padding: 20px;
+  /* border: 1px solid #000;  */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .user-list-table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
+  border: 1px solid #000;
 }
 
 .user-list-table th, .user-list-table td {
@@ -15,11 +19,26 @@
 }
 
 .user-list-table th {
-  background-color: #f2f2f2;
+  background-color: #667ba0; 
+  color: #fff; 
+}
+
+.view-details-btn {
+  background-color: #8fa9c4;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-details-btn:hover {
+  background-color: #5b9be0;
 }
 
 .see-all-users {
   margin-top: 20px;
+  text-align: center;
 }
 
 .see-all-users a {
@@ -27,18 +46,49 @@
   color: #007bff;
 }
 
-.see-all-users pre {
-  background-color: #f2f2f2;
-  padding: 10px;
-  border-radius: 5px;
+.see-all-users a:hover {
+  color: #0056b3;
 }
 
-.user-detail {
+.pagination {
   margin-top: 20px;
+  text-align: center;
 }
 
-.user-detail pre {
-  background-color: #f2f2f2;
-  padding: 10px;
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
   border-radius: 5px;
+  background-color: #6490c0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #b8aaaa;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+.user-list-content {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+pre {
+  font-size: 16px;
+  font-family: monospace;
+  white-space: pre-wrap;
 }

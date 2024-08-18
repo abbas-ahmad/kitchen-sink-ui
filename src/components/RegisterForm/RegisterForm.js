@@ -27,7 +27,7 @@ const RegisterForm = () => {
         setSuccess(null);
       }
     } catch (error) {
-      setError('An error occurred while registering member');
+      setError({ message: 'An error occurred while registering member' });
       setSuccess(null);
     }
   };
