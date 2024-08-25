@@ -9,21 +9,28 @@ const RegisterForm = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  // Fetch the token from sessionStorage
+  const token = localStorage.getItem('token');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const user = new User(null, name, email, phoneNumber);
     try {
       const response = await fetch('http://localhost:8080/api/members', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
         body: JSON.stringify(user),
       });
+
       if (response.ok) {
         setSuccess('Member registered successfully');
         setError(null);
       } else {
         const errorMessage = await response.json();
-        setError(errorMessage.errors);
+        setError(errorMessage.errors || { message: 'An error occurred' });
         setSuccess(null);
       }
     } catch (error) {

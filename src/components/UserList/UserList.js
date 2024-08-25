@@ -8,12 +8,36 @@ const UserList = () => {
   const [usersPerPage, setUsersPerPage] = useState(5);
   const navigate = useNavigate();
 
+  // Fetch the token from sessionStorage
+  const token = localStorage.getItem('token');
+  console.log('Stored token:', token);
+
   useEffect(() => {
-    fetch('http://localhost:8080/api/members')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-  }, []);
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/members', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`, 
+            'Content-Type': 'application/json'
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUsers(data);
+        } else {
+          console.error('Error fetching users:', response.statusText);
+          // Handle response errors or redirect to login if unauthorized
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        // Handle fetch errors
+      }
+    };
+
+    fetchUsers();
+  }, [token]);
 
   const handleViewDetails = (id) => {
     navigate(`/api/members/${id}`);
