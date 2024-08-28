@@ -8,6 +8,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import AllMembers from './components/AllMembers/AllMembers';
 import LoginPage from './components/Login/LoginForm'; 
 import Layout from './components/Layout/Layout';
+import PrivateRoute from './components/PrivateRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +17,33 @@ root.render(
       <Layout>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<><RegisterForm /><UserList /></>} />
-          <Route path="/api/members/:id" element={<UserDetails />} />
-          <Route path="/all-members" element={<AllMembers />} />
+          <Route 
+            path="/" 
+            element={
+              <PrivateRoute>
+                <>
+                  <RegisterForm />
+                  <UserList />
+                </>
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/api/members/:id" 
+            element={
+              <PrivateRoute>
+                <UserDetails />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/all-members" 
+            element={
+              <PrivateRoute>
+                <AllMembers />
+              </PrivateRoute>
+            } 
+          />
         </Routes>
       </Layout>
     </BrowserRouter>
